@@ -31,7 +31,7 @@ app.post('/pessoas', async function(req, res){
   }
 });
 
-app.get('/pessoas', async function(req, res){
+app.delete('/pessoas', async function(req, res){
   try {
     var pessoas = await Pessoa.delete(req.body.id);
     res.json(pessoas.rows);
