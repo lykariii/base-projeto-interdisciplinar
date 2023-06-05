@@ -15,7 +15,7 @@ class Pessoa {
   static async insert(data) {
     try {
       const connect = await db.connect();
-      const sql = "insert into pessoas (nome, idade, uf) value ('kari', 16, 'NY')";
+      const sql = "insert into pessoas (nome, idade, uf) value ($1, $2, $3)";
       const values = [data.nome, data.idade, data.uf];
       return await connect.query(sql, values);
     } catch (error) {
@@ -39,7 +39,7 @@ class Pessoa {
   static async delete(id) {
     try {
       const connect = await db.connect();
-      const sql = "";
+      const sql = "delete id from pessoas";
       return await connect.query(sql, [id]);
     } catch (error) {
       console.error('Erro em delete:', error);
